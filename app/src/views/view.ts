@@ -23,8 +23,9 @@ export abstract class View<T> {
     throw Error('Classe filha precisa implementar o método template')
   }*/
 
-  @logarTempoDeExecucao(true)
-  @inspect()
+  // os dois decorators removidos para não poluir o console
+  // @logarTempoDeExecucao(true)
+  // @inspect()
   public update(model: T): void {
     let template = this.template(model)
     this.elemento.innerHTML = template

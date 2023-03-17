@@ -14,7 +14,11 @@
 - Portabilidade de funcionalidade antiga para decorators. :white_check_mark:
 
 ### Aula 3:
-- 
+- Como evitar código duplicado; :white_check_mark:
+- Decorator de propriedade; :white_check_mark:
+- Criação dinâmica de getters; :white_check_mark:
+- O uso de Object.defineProperty; :white_check_mark:
+- Cache de decorators. :white_check_mark:
 
 ### Aula 4:
 - 

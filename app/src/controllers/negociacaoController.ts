@@ -1,3 +1,5 @@
+import { domInjector } from "../decorators/domInjector.js"
+import { inspect } from "../decorators/inspect.js"
 import { logarTempoDeExecucao } from "../decorators/logarTempoDeExecucao.js"
 import { DiasDaSemana } from "../enumerations/diasDaSemana.js"
 import { Negociacao } from "../models/negociacao.js"
@@ -6,20 +8,24 @@ import { MensagemView } from "../views/mensagemView.js"
 import { NegociacoesView } from "../views/negociacoesView.js"
 
 export class NegociacaoController {
+  @domInjector('#data')
   private inputData: HTMLInputElement
+  @domInjector('#quantidade')
   private inputQuantidade: HTMLInputElement
+  @domInjector('#valor')
   private inputValor: HTMLInputElement
   private negociacoes = new Negociacoes() // ou private negociacoes: Negociacoes = new Negociacoes()
   private negociacoesView = new NegociacoesView('#negociacoesView')
   private mensagemView = new MensagemView('#mensagemView')
 
   constructor() {
-    this.inputData = document.querySelector('#data') as HTMLInputElement //sobre o 'as' ver vídeo da aula 5.6 e StrictNullChecks
-    this.inputQuantidade = document.querySelector('#quantidade') as HTMLInputElement
-    this.inputValor = document.querySelector('#valor') as HTMLInputElement
+    //this.inputData = document.querySelector('#data') as HTMLInputElement //sobre o 'as' ver vídeo da aula 5.6 e StrictNullChecks
+    //this.inputQuantidade = document.querySelector('#quantidade') as HTMLInputElement
+    //this.inputValor = document.querySelector('#valor') as HTMLInputElement
     this.negociacoesView.update(this.negociacoes)
   }
 
+  @inspect()
   @logarTempoDeExecucao()
   public adiciona(): void {
     // consigo acessar o método criaNegociacao pelo ponto . pq lá em negociação eu coloquei o metodo como static
