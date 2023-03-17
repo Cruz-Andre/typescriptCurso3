@@ -1,3 +1,4 @@
+import { inspect } from "../decorators/inspect.js";
 import { logarTempoDeExecucao } from "../decorators/logarTempoDeExecucao.js";
 
 // Generics: o T é de type, qual o tipo que está aqui? é o que vou receber de mensagemView e negociacoesView (como se tivesse recebendo propriedades)
@@ -5,17 +6,13 @@ import { logarTempoDeExecucao } from "../decorators/logarTempoDeExecucao.js";
 export abstract class View<T> {
   // foi usado o protected para que a classe filha poder acessar 'elemento' (class negociacoesView e mensagemView)
   protected elemento: HTMLElement
-  private escapar = false // ou private escapar: boolean = false
 
-  constructor(seletor: string, escapar?: boolean) {
+  constructor(seletor: string) {
     const elemento = document.querySelector(seletor)
     if (elemento) {
       this.elemento = elemento as HTMLElement
     } else {
       throw Error(`Seletor ${seletor} não existe no DOM. Verifique com o DEV`);
-    }
-    if(escapar) {
-      this.escapar = escapar
     }
   }
 
@@ -26,12 +23,10 @@ export abstract class View<T> {
     throw Error('Classe filha precisa implementar o método template')
   }*/
 
-  @logarTempoDeExecucao()
+  @logarTempoDeExecucao(true)
+  @inspect()
   public update(model: T): void {
     let template = this.template(model)
-    if(this.escapar) {
-      template = template.replace(/<script>[\s\S]*?<\/script>/, '')
-    }
     this.elemento.innerHTML = template
   }
 

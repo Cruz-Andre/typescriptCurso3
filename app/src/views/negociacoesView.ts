@@ -1,3 +1,4 @@
+import { escapar } from "../decorators/escapar.js"
 import { Negociacoes } from "../models/negociacoes.js"
 import { View } from "./view.js"
 
@@ -15,6 +16,7 @@ export class NegociacoesView extends View<Negociacoes> {
   //o template está na classe pai (view) e negociacoesView (que é a classe filha) está herdando o template e é ela que define o que vai retornar
   // se tirar o template daqui vai dar erro.
   // protected: tem que colocar para evitar que o template apareça como opção de uso fora das classes filhas de view (que receberam extends de view)
+  @escapar()
   protected template(model: Negociacoes): string {
 
     /* <td>${new Intl.DateTimeFormat().format(negociacao.data)}</td> uma opção para colocar a data no formato de acordo com o idioma do browser */

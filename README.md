@@ -7,7 +7,11 @@
 - Logar tempo de execução com decorator. :white_check_mark:
 
 ### Aula 2:
-- 
+- Decorator com parâmetro; :white_check_mark:
+- Criação de um decorator de inspeção; :white_check_mark:
+- Ordem de execução dos decorators; :white_check_mark:
+- Simplificação no design de decorators; :white_check_mark:
+- Portabilidade de funcionalidade antiga para decorators. :white_check_mark:
 
 ### Aula 3:
 - 
